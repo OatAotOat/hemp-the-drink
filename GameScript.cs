@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameScript : MonoBehaviour
@@ -94,39 +95,38 @@ public class GameScript : MonoBehaviour
         else if (amounts[3] / amounts[0] > 2.25f && amounts[3] / amounts[1] > 2.25f &&
             amounts[3] / amounts[2] > 2.25f)
         {
-            result.color = Color.yellow;
-            result.SetText("Butter");
+            Debug.Log("Skim");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 4);
             return;
         }
         else if (amounts[0] / amounts[1] > 1.5f &&
                  amounts[0] / amounts[2] > 1.5f)
         {
-            result.color = Color.black;
-            result.SetText("Coffee");
+            Debug.Log("Coffee");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
             return;
         }
         else if (amounts[1] / amounts[0] > 1.5f &&
                  amounts[1] / amounts[2] > 1.5f)
         {
-            result.color = Color.magenta;
-            result.SetText("Sweet");
+            Debug.Log("Sweet");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 6);
             return;
         }
         else if (Mathf.Abs(amounts[0] - amounts[1]) < 7.5f)
         {
-            result.color = Color.gray;
-            result.SetText("Chocolate");
+            Debug.Log("Chocolate");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             return;
         }
         else if (Mathf.Abs(amounts[1] - amounts[2]) < 7.5f)
         {
-            result.color = Color.red;
-            result.SetText("Strawberry");
+            Debug.Log("Strawberry");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 5);
             return;
         }
-
-        result.color = Color.white;
-        result.SetText("Plain");
+        Debug.Log("Plain");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
     }
 
     public void Reset()
