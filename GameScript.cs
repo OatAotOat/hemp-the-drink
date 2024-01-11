@@ -73,13 +73,6 @@ public class GameScript : MonoBehaviour
 
     public void Mix()
     {
-        if (amountOfMixWater < 75)
-        {
-            result.color = Color.red;
-            result.SetText("Not Ready To Mix");
-            return;
-        }
-
         float[] amounts = new float[ingredients.Length];
         for (int i = 0; i < ingredients.Length; i++)
         {
@@ -95,37 +88,37 @@ public class GameScript : MonoBehaviour
         else if (amounts[3] / amounts[0] > 2.25f && amounts[3] / amounts[1] > 2.25f &&
             amounts[3] / amounts[2] > 2.25f)
         {
-            Debug.Log("Skim");
+            GetComponent<Player>().gay("Skim");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 4);
             return;
         }
         else if (amounts[0] / amounts[1] > 1.5f &&
                  amounts[0] / amounts[2] > 1.5f)
         {
-            Debug.Log("Coffee");
+            GetComponent<Player>().gay("Coffee");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
             return;
         }
         else if (amounts[1] / amounts[0] > 1.5f &&
                  amounts[1] / amounts[2] > 1.5f)
         {
-            Debug.Log("Sweet");
+            GetComponent<Player>().gay("Sweet");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 6);
             return;
         }
         else if (Mathf.Abs(amounts[0] - amounts[1]) < 7.5f)
         {
-            Debug.Log("Chocolate");
+            GetComponent<Player>().gay("Chocolate");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             return;
         }
         else if (Mathf.Abs(amounts[1] - amounts[2]) < 7.5f)
         {
-            Debug.Log("Strawberry");
+            GetComponent<Player>().gay("Strawberry");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 5);
             return;
         }
-        Debug.Log("Plain");
+        GetComponent<Player>().gay("Plain");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
     }
 
